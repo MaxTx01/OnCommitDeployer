@@ -12,4 +12,4 @@ RUN lein ring war
 
 FROM openjdk:8-jre-alpine
 
-RUN cd ./app-for-deploy-mater && lein ring server
+RUN lein ring server
