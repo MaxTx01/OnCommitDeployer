@@ -1,4 +1,4 @@
-FROM git as git
+FROM alpine/git as git
 RUN mkfir /tmp
 
 WORKDIR /tmp
