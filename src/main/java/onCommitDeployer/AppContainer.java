@@ -1,14 +1,18 @@
 package onCommitDeployer;
 
+import com.google.common.collect.ImmutableMap;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerCertificateException;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.DockerException;
 import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
+import com.spotify.docker.client.messages.HostConfig;
+import com.spotify.docker.client.messages.PortBinding;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class AppContainer {
     private final DockerClient docker;
@@ -30,8 +34,13 @@ public class AppContainer {
         }
 
         currentImageId = docker.build(Paths.get("./docker"), "app-for-deploy");
-        ContainerCreation container = docker.createContainer(ContainerConfig.builder().image(currentImageId)
-                .exposedPorts("8000:8000").build());
+        ContainerConfig containerConfig = ContainerConfig.builder()
+                .hostConfig(HostConfig.builder()
+                        .portBindings(ImmutableMap.of("8000/tcp", Arrays.asList(PortBinding.of("", 8000))))
+                        .build())
+                .image(currentImageId)
+                .build();
+        ContainerCreation container = docker.createContainer(containerConfig);
         currentContainerId = container.id();
     }
 }
