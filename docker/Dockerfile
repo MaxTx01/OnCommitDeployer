@@ -12,4 +12,4 @@ RUN lein ring war
 
 FROM openjdk:8-jre-alpine
 
-RUN lein ring server
+RUN java -jar /target/app-for-deploy-0.1.0-SNAPSHOT.war
