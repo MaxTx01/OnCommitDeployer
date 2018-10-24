@@ -31,7 +31,7 @@ public class AppContainer {
 
         currentImageId = docker.build(Paths.get("./docker"), "app-for-deploy");
         ContainerCreation container = docker.createContainer(ContainerConfig.builder().image(currentImageId)
-                .portSpecs("8000:8000").build());
+                .exposedPorts("8000:8000").build());
         currentContainerId = container.id();
     }
 }
