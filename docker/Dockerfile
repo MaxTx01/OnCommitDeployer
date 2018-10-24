@@ -1,5 +1,5 @@
 FROM alpine/git as git
-RUN mkfir /tmp
+RUN mkdir /tmp
 
 WORKDIR /tmp
 ARG APP_REPO=https://github.com/MaxTx01/AppForDeploy.git
