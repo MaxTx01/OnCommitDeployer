@@ -1,11 +1,10 @@
-import com.spotify.docker.client.DockerCertificateException;
-import com.spotify.docker.client.DockerException;
+package onCommitDeployer;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 import org.apache.commons.io.IOUtils;
 import org.json.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 

@@ -1,3 +1,5 @@
+package onCommitDeployer;
+
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerCertificateException;
 import com.spotify.docker.client.DockerClient;
