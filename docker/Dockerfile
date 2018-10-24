@@ -2,7 +2,7 @@ FROM ubuntu:15.04
 
 ARG APP_REPO=https://github.com/MaxTx01/AppForDeploy.git
 
-RUN apt-get install curl
+RUN apt-get -y install curl
 RUN curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein --output lein
 RUN lein self-install
 
