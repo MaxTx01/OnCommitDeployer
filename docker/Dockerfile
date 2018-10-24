@@ -8,8 +8,4 @@ FROM clojure as build
 COPY --from=git /tmp/AppForDeploy /tmp/AppForDeploy
 
 WORKDIR /tmp/AppForDeploy
-RUN lein ring war
-
-FROM openjdk:8-jre-alpine
-
-RUN java -jar /target/app-for-deploy-0.1.0-SNAPSHOT.war
+RUN lein ring server
