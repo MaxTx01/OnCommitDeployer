@@ -38,6 +38,7 @@ public class AppContainer {
                 .hostConfig(HostConfig.builder()
                         .portBindings(ImmutableMap.of("8000/tcp", Arrays.asList(PortBinding.of("", 8000))))
                         .build())
+                .exposedPorts("8000/tcp")
                 .image(currentImageId)
                 .build();
         ContainerCreation container = docker.createContainer(containerConfig);
